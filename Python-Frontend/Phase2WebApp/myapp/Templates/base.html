@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Django App{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome for icons -->
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Django App</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'encrypt' %}">Encrypt</a></li>  <!-- Link to Encrypt page -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+
+        <!-- Your encryption forms -->
+        <form id="jsonEncryptForm">
+            <input type="text" id="jsonTextInput" placeholder="Enter text">
+            <label for="choice1"><input type="radio" name="choice" id="choice1" value="1"> 3DES</label>
+            <label for="choice2"><input type="radio" name="choice" id="choice2" value="2"> AES-256</label>
+            <button type="button" id="encryptButton">Encrypt JSON</button>
+        </form>
+
+        <form id="formDataEncryptForm">
+            <input type="text" id="formDataTextInput" placeholder="Enter text">
+            <input type="file" id="fileInput">
+            <label for="choice1"><input type="radio" name="choice" id="choice1" value="1"> 3DES</label>
+            <label for="choice2"><input type="radio" name="choice" id="choice2" value="2"> AES-256</label>
+            <button type="submit">Encrypt Form Data</button>
+        </form>
+
+        <!-- Encrypted output and copy button -->
+        <div id="encryptedOutput"></div>
+        <button id="copyButton" onclick="copyToClipboard()">
+            <i class="fas fa-copy"></i> Copy
+        </button>
+
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 My Django App</p>
+    </footer>
+    <script src="{% static 'js/encryptJson.js' %}"></script>
+    <script src="{% static 'js/encryptFormData.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/copy.js' %}"></script>
+</body>
+</html>

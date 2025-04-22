@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Encrypt{% endblock %}
+
+{% block content %}
+<h1>Encrypt Your Text or File</h1>
+<form id="encryptForm" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="textInput">Enter Text to Encrypt:</label>
+    <textarea name="text" id="textInput"></textarea><br>
+    <label for="choice">Select Encryption Level:</label><br>
+    <input type="radio" id="choice1" name="choice" value="1">
+    <label for="choice1">Moderate (3DES)</label><br>
+    <input type="radio" id="choice2" name="choice" value="2">
+    <label for="choice2">High (AES-256 or RSA-2048)</label><br>
+    <label for="fileInput">Or Upload a File to Encrypt:</label>
+    <input type="file" name="file" id="fileInput"><br>
+    <button type="button" id="encryptButton">Encrypt</button>
+</form>
+<h2>Encrypted Output:</h2>
+<p id="encryptedOutput"></p>  <!-- Placeholder for displaying encrypted data -->
+{% endblock %}
