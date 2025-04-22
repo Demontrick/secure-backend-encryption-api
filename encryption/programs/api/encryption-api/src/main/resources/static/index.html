@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SecurePass</title>
+</head>
+<body>
+    <h1>Welcome to SecurePass</h1>
+    <form id="securepass-form" method="POST" action="/api/securepass/save">
+        <label for="dataType">Data Type:</label>
+        <input type="text" id="dataType" name="dataType" required>
+        <br>
+        <label for="dataContent">Data Content:</label>
+        <textarea id="dataContent" name="dataContent" required></textarea>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('securepass-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const dataType = document.getElementById('dataType').value;
+            const dataContent = document.getElementById('dataContent').value;
+            const email = document.getElementById('email').value;
+
+            const response = await fetch('/api/securepass/save', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    dataType: dataType,
+                    dataContent: dataContent,
+                    email: email
+                })
+            });
+
+            const result = await response.text();
+            alert(result);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+Phase 1 Documentation: Concurrent Encryption Project
+1. Introduction
+The Concurrent Encryption Project is a Java-based application designed to perform encryption using basic encryption algorithms (AES and RSA) with concurrent processing to enhance performance. The project comprises three main components: ConcurrentEncryptionProgram.java, EncryptionUtil.java, and FileHandler.java.
+
+2. Files Overview
+ConcurrentEncryptionProgram.java: Main class that orchestrates the encryption process.
+
+EncryptionUtil.java: Utility class containing the encryption algorithms (AES, RSA).
+
+FileHandler.java: Class responsible for file operations (reading, writing, handling encrypted files).
+
+3. Class Descriptions
+ConcurrentEncryptionProgram.java
+Description: This is the main class that manages the concurrent encryption process. It coordinates the encryption tasks using multiple threads to enhance performance.
+
+Key Methods:
+
+main(String[] args): Entry point of the application. Parses arguments and initiates the encryption process.
+
+runEncryption(): Executes the encryption process concurrently using threads.
+
+EncryptionUtil.java
+Description: This utility class provides the implementation of the encryption algorithms (AES and RSA).
+
+Key Methods:
+
+encryptAES(String data, String key): Encrypts data using AES algorithm.
+
+encryptRSA(String data, PublicKey publicKey): Encrypts data using RSA algorithm.
+
+FileHandler.java
+Description: Handles all file-related operations such as reading the input file, writing the encrypted output, and managing file I/O exceptions.
+
+Key Methods:
+
+readFile(String filePath): Reads the content of a file.
+
+writeFile(String filePath, String data): Writes data to a file.
+
+4. Setup and Usage
+Setup Instructions:
+
+Clone the repository to your local machine.
+
+Open the project in your preferred IDE.
+
+Ensure all dependencies are installed and configured correctly.
+
+Running the Program:
+
+Navigate to the main class ConcurrentEncryptionProgram.java.
+
+Run the main method to start the encryption process.
+
+Follow the console instructions to provide input files and encryption keys.
